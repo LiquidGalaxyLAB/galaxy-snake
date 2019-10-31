@@ -2,10 +2,10 @@
 
 echo -e "
 
-\e[34m ___			     _				_
-\e[31m|__ |				|_| 	   ____| |
-\e[33m  | |__  					  |______|
-\e[32m  |____|						 \e[39m
+\e[34m ___\e[39m                 _\e[31m            _
+\e[34m|__ |\e[39m               |_|\e[31m      ____| |
+\e[34m  | |__\e[39m                \e[31m     |______|
+\e[34m  |____|                      \e[39m
 
 https://github.com/LiquidGalaxy/liquid-galaxy
 
