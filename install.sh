@@ -19,14 +19,14 @@ https://github.com/LiquidGalaxyLAB/liquid-galaxy
 
 echo "Installing Snake" > $HOME/snake.txt
 
-# Initialize sudo access
+# Open port
 
-sudo -v
+LINHA=cat /etc/iptables.conf | grep "tcp" | grep "81" | awk -F " -j" '{print $1}'
+RESULT=$LINHA”,“8114
+sed -i “s/$LINHA/$RESULT/g” /etc/iptables.conf
+
 
 # Server
-
-sudo npm install pm2@latest -g 2>>$HOME/snake.txt
-
 pm2 start index.js --name SNAKE_PORT:8114 2>>$HOME/snake.txt
 
 pm2 save 2>>$HOME/snake.txt
