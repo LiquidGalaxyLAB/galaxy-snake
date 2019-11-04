@@ -6,7 +6,7 @@ echo "Installing Galaxy Snake" >$HOME/snake.txt
 
 sudo -v
 
-# Open port 8112
+# Open port 8114
 
 LINE=`cat /etc/iptables.conf | grep "tcp" | grep "81" | awk -F " -j" '{print $1}'`
 
@@ -16,7 +16,7 @@ sed -i "s/$LINE/$RESULT/g" /etc/iptables.conf 2>>$HOME/snake.txt
 
 # Server
 
-pm2 start index.js --name PONG_PORT:8112 2>>$HOME/snake.txt
+pm2 start index.js --name SNAKE_PORT:8114 2>>$HOME/snake.txt
 
 pm2 save 2>>$HOME/snake.txt
 
