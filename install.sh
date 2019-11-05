@@ -8,11 +8,17 @@ sudo -v
 
 # Open port 8114
 
-LINE=`cat /etc/iptables.conf | grep "tcp" | grep "81" | awk -F " -j" '{print $1}'`
+LINE=`cat /etc/iptables.conf | grep "tcp" | grep " 81," | awk -F " -j" '{print $1}'`
 
 RESULT=$LINE",8114"
 
-sed -i "s/$LINE/$RESULT/g" /etc/iptables.conf 2>>$HOME/snake.txt
+DATA=`cat /etc/iptables.conf | grep "tcp" | grep " 81," | grep "8114"`
+
+if [ "$DATA" == "" ]; then
+    echo "Port already open"
+else
+    sed -i "s/$LINE/$RESULT/g" /etc/iptables.conf 2>>$HOME/snake.txt
+fi
 
 # Server
 
