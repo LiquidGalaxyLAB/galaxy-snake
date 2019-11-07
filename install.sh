@@ -20,6 +20,10 @@ else
     echo "Port already open"
 fi
 
+# Install dependencies
+
+npm install
+
 # Server
 
 pm2 start index.js --name SNAKE_PORT:8114 2>>$HOME/snake.txt
