@@ -146,7 +146,6 @@ var Game = {
 			for (var i = 0; i < SnakeGame.snakes.length; i++) {
 				if (SnakeGame.snakes[i].id == msg) {
 					SnakeGame.snakes[i].color.resetSnake();
-					console.log(SnakeGame.snakes[i].id)
 					SnakeGame.snakes.splice(i, 1);
 				}
 			}

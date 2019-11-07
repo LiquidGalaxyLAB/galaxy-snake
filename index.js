@@ -38,19 +38,16 @@ app.get('/screen', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 app.get('/', function(req, res){
-  res.writeHead(301, {Location:"http://192.168.0.155:8114/controller"});
+  res.writeHead(301, {Location:"http://192.168.0.155:8114/controller"}); //hardcoded ip address
   res.end();
 });
 setInterval(() => {
-  //console.log(controllers)
-  //console.log(nControllers)
   if(controllers.length != auxResp)
   {
     for(var i=0; i < controllers.length; i++)
     {
       if(!controllers[i].resp)
       {
-        console.log(controllers[i].id)
         io.emit('died',controllers[i].id)
         dropController(controllers[i].id)
         i--;
@@ -80,12 +77,6 @@ function dropController(id){
 }
 
 io.on('connection', function(socket){
-  //console.log('conection: ' +socket.id)
-  //catch name for url
-  // console.log("id",url.parse(socket.handshake.headers.referer))
-  // console.log("screen conected number: ", nScreens, socket.id);
-  //tudo o mundo
-
   //welcome process
   if(socket.handshake.query['type'] == "screen")
   {
@@ -96,7 +87,7 @@ io.on('connection', function(socket){
   {
     if(nControllers < 4){
       nControllers += 1;
-      //console.log("A new player has joined, ID = " + socket.id);
+
       controllers.push(Controller.new.call(this, socket.id));
       socket.emit("welcomeController", {nController : socket.id})
       io.emit('updateNControllers',{nControllers:nControllers});
@@ -110,8 +101,6 @@ io.on('connection', function(socket){
   socket.on("windowData", function(msg){
       maxRes += msg.screenResolution;
       clients.push(new client(nScreens,socket.id,msg.screen, msg.screenResolution))
-      //console.log(clients)
-      //console.log(maxRes)
       io.emit('updateNScreens', {nScreens : nScreens , maxRes : maxRes})
   })
 
@@ -172,16 +161,13 @@ io.on('connection', function(socket){
       clients.forEach(function(client){
         if (socket.id == client.socketId){
           aux = client;
-          //console.log("our friend", client.id, "left us. It was screen", client.screen)
           maxRes -= client.screenSize;
-          //console.log("new screen size", maxRes)
         }
         if(aux != null && client.id > aux.id)
         {
           client.screen-=1;
           client.id -= 1;
         }
-        //console.log(clients)
       })
       if(aux != null)
         clients.splice(aux.id-1,1)
@@ -196,4 +182,5 @@ io.on('connection', function(socket){
 
 
 http.listen(8114,function(){
+  console.log("Listening on port 8114!")
 });
