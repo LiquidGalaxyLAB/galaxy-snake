@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Installing Galaxy Snake" >$HOME/snake.txt
+echo "Installing Galaxy Snake" >$HOME/installer/projLog/snake.txt
 
 # Initialize sudo access
 
@@ -15,7 +15,7 @@ RESULT=$LINE",8114"
 DATA=`cat /etc/iptables.conf | grep "tcp" | grep " 8100" | grep "8114"`
 
 if [ "$DATA" == "" ]; then
-    sed -i "s/$LINE/$RESULT/g" /etc/iptables.conf 2>>$HOME/snake.txt
+    sed -i "s/$LINE/$RESULT/g" /etc/iptables.conf 2>>$HOME/installer/projLog/snake.txt
 else
     echo "Port already open"
 fi
@@ -26,8 +26,8 @@ npm install
 
 # Server
 
-pm2 start index.js --name SNAKE_PORT:8114 2>>$HOME/snake.txt
+pm2 start index.js --name SNAKE_PORT:8114 2>>$HOME/installer/projLog/snake.txt
 
-pm2 save 2>>$HOME/snake.txt
+pm2 save 2>>$HOME/installer/projLog/snake.txt
 
-echo "Installation complete" >>$HOME/snake.txt
+echo "Installation complete" >>$HOME/installer/projLog/snake.txt
