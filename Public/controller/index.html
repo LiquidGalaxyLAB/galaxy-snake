@@ -8,6 +8,14 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	</head>
 	<script src="/socket.io/socket.io.js"></script>
+	<style>
+		.nipple {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-color: #f1f1f1;
+		}
+	</style>
 	<body>	
 		<div class="jumbotron" id = "topo">
 			<h1 style="font-size: 400%"> Galaxy Snake </h1>	
@@ -26,45 +34,9 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-4">
-					
-				</div>
-				<div class="col-xs-4">
-					<img src="arrowUp.png" width="100" height="100" onclick="onBtnUpClickEvent();" />
-				</div>
-				<div class="col-xs-4">
-					
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-xs-4">
-					<img src="arrowLeft.png" width="100" height="100" onclick="onBtnLeftClickEvent();" />
-				</div>
-				<div class="col-xs-4">
-					
-				</div>
-				<div class="col-xs-4">
-					<img src="arrowRight.png" width="100" height="100" onclick="onBtnRightClickEvent();" />
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-xs-4">
-					
-				</div>
-				<div class="col-xs-4">
-					<img src="arrowDown.png" width="100" height="100" onclick="onBtnDownClickEvent();" />
-				</div>
-				<div class="col-xs-4">
-					
-				</div>
-			</div>
-		</div>
+		
+		<div class="nipple" id="zone_joystick"></div>
 	</body>
-
+	<script src="./nipplejs.min.js"></script>
 	<script src="Controller.js"></script>
 </html>

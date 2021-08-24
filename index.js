@@ -41,27 +41,6 @@ app.get('/', function(req, res){
   res.writeHead(301, {Location:"http://192.168.0.155:8114/controller"}); //hardcoded ip address
   res.end();
 });
-setInterval(() => {
-  if(controllers.length != auxResp)
-  {
-    for(var i=0; i < controllers.length; i++)
-    {
-      if(!controllers[i].resp)
-      {
-        io.emit('died',controllers[i].id)
-        dropController(controllers[i].id)
-        i--;
-      }
-      else
-        controllers[i].resp = false;
-    }
-
-    auxResp = 0;
-  }
-  io.emit("ping")
-
-  io.emit('updateNControllers',{nControllers:nControllers});
-}, 1000);
 
 function dropController(id){
   for(var i=0; i < controllers.length; i++)

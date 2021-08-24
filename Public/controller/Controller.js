@@ -34,7 +34,31 @@ socket.on("died", function(msg){
 socket.on("welcomeController",function(msg){
 	id = msg.nController;
 })
-function onBtnUpClickEvent(){
+
+const options = {
+	color: "blue",
+    zone: document.getElementById('zone_joystick'),
+}
+
+var manager = nipplejs.create(options);
+manager.on("dir", function (evt, data) {
+	var direction = data.direction;
+	console.log(direction)
+	if(direction.angle == "left") {
+		vib(100);
+		socket.emit("pDir", {dir:DIRECTION.LEFT, id:id});
+	} else if(direction.angle == "right") {
+		vib(100);
+		socket.emit("pDir", {dir:DIRECTION.RIGHT, id:id});
+	} else if(direction.angle == "up") {
+		vib(100);
+		socket.emit("pDir", {dir:DIRECTION.UP, id:id});
+	} else if(direction.angle == "down") {
+		vib(100);
+		socket.emit("pDir", {dir:DIRECTION.DOWN, id:id});
+	}
+})
+/* function onBtnUpClickEvent(){
 	vib(100);
 	socket.emit("pDir", {dir:DIRECTION.UP, id:id});
 }
@@ -49,7 +73,7 @@ function onBtnRightClickEvent(){
 function onBtnLeftClickEvent(){
 	vib(100);
 	socket.emit("pDir", {dir:DIRECTION.LEFT, id:id});
-}
+} */
 function onBtnPauseClickEvent(){
 	vib(100);
 	socket.emit("pause", {id : id});
