@@ -36,8 +36,10 @@ socket.on("welcomeController",function(msg){
 })
 
 const options = {
-	color: "blue",
-    zone: document.getElementById('zone_joystick'),
+    color: "green",
+    zone: document.querySelector('.zone'),
+    mode: "static",
+    position: { left: "50%", top: "50%"}
 }
 
 var manager = nipplejs.create(options);
@@ -58,26 +60,12 @@ manager.on("dir", function (evt, data) {
 		socket.emit("pDir", {dir:DIRECTION.DOWN, id:id});
 	}
 })
-/* function onBtnUpClickEvent(){
-	vib(100);
-	socket.emit("pDir", {dir:DIRECTION.UP, id:id});
-}
-function onBtnDownClickEvent(){
-	vib(100);
-	socket.emit("pDir", {dir:DIRECTION.DOWN, id:id});
-}
-function onBtnRightClickEvent(){
-	vib(100);
-	socket.emit("pDir", {dir:DIRECTION.RIGHT, id:id});
-}
-function onBtnLeftClickEvent(){
-	vib(100);
-	socket.emit("pDir", {dir:DIRECTION.LEFT, id:id});
-} */
+
 function onBtnPauseClickEvent(){
 	vib(100);
 	socket.emit("pause", {id : id});
 }
+
 function onBtnReadyClickEvent(){
 	vib(100);
 	socket.emit("ready",{id: id});

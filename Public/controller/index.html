@@ -8,35 +8,48 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	</head>
-	<style>
-		.nipple {
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			background-color: #f1f1f1;
-		}
-	</style>
-	<body>	
-		<div class="jumbotron" id = "topo">
-			<h1 style="font-size: 400%"> Galaxy Snake </h1>	
-		</div>	
 
-		<div class="container">
+		<style>
+			.zone {
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				z-index: -1;
+				left: 0;
+			}
+
+			.jumbotron {
+				width: 100%;
+				background-color: #fff;
+			}
+
+			.noselect {
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+			-khtml-user-select: none; /* Konqueror HTML */
+				-moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+					user-select: none; /* Non-prefixed version, currently
+											supported by Chrome, Edge, Opera and Firefox */
+			}
+		</style>
+		
+		<link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="167x167" href="./icons/apple-touch-icon-ipad-retina.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon-iphone-retina.png">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="zone"></div>
 			<div class="row">
-				<div class="col-xs-4">
-					<input type = "button" id="btnPause" value="Pause" class="btn btn-primary btn-lg" onclick="onBtnPauseClickEvent();"/>
-				</div>
-				<div class="col-xs-4">
-					<input type = "button" id="btnRestart" value="Restart" class="btn btn-primary btn-lg" onclick="onBtnRestartClickEvent()" />
-				</div>
-				<div class="col-xs-4">
-					<input type = "button" id="btnReady" value="Ready" class="btn btn-primary btn-lg" onclick="onBtnReadyClickEvent();"/>
+				<div class="jumbotron noselect" id="topo">
+					<h1 style="font-size: 400%">Galaxy Snake</h1>
+					<input type = "button" id="btnPause" value="Pause" class="btn btn-success btn-lg" onclick="onBtnPauseClickEvent();"/>
+					<input type = "button" id="btnRestart" value="Restart" class="btn btn-success btn-lg" onclick="onBtnRestartClickEvent()" />
+					<input type = "button" id="btnReady" value="Ready" class="btn btn-success btn-lg" onclick="onBtnReadyClickEvent();"/>
 				</div>
 			</div>
 		</div>
-		
-		<div class="nipple" id="zone_joystick"></div>
 	</body>
 	<script src="./nipplejs.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
