@@ -10,6 +10,14 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 		<style>
+			html, body {
+				touch-action: none;
+				-webkit-overflow-scrolling: none;
+				overflow: hidden;
+				/* Other browsers */
+				overscroll-behavior: none;
+			}
+			
 			.zone {
 				position: absolute;
 				height: 100%;
@@ -24,13 +32,13 @@
 			}
 
 			.noselect {
-			-webkit-touch-callout: none; /* iOS Safari */
-			-webkit-user-select: none; /* Safari */
-			-khtml-user-select: none; /* Konqueror HTML */
-				-moz-user-select: none; /* Old versions of Firefox */
-				-ms-user-select: none; /* Internet Explorer/Edge */
-					user-select: none; /* Non-prefixed version, currently
-											supported by Chrome, Edge, Opera and Firefox */
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-khtml-user-select: none; /* Konqueror HTML */
+					-moz-user-select: none; /* Old versions of Firefox */
+					-ms-user-select: none; /* Internet Explorer/Edge */
+						user-select: none; /* Non-prefixed version, currently
+												supported by Chrome, Edge, Opera and Firefox */
 			}
 		</style>
 		
@@ -40,7 +48,7 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-			<div class="zone"></div>
+			<div class="zone noselect"></div>
 			<div class="row">
 				<div class="jumbotron noselect" id="topo">
 					<h1 style="font-size: 400%">Galaxy Snake</h1>
