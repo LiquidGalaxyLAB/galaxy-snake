@@ -16,6 +16,18 @@ var screenRes = canvas.width;
 
 var playercount = 0;
 var readyPlayers = 0;
+
+// Start of LG Connection
+const galaxyPort = 5433
+const ip = 'lg1'
+const lgSocket = io(`http://${ip}:${galaxyPort}`)
+lgSocket.on("reset", () => {
+    const url = window.location.href
+    const num = url.substring(url.length)
+    window.location.href = `http://${ip}:${galaxyPort}/galaxy/basic/screensaver?num=${num}`
+})
+// End of LG Connection
+
 //Directions
 var DIRECTION = {
 	IDLE: 0,
